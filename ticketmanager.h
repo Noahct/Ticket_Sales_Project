@@ -10,6 +10,8 @@
 #include <fstream>
 #include <string>
 using namespace std;
+const int ROWS = 15;
+const int COLS = 30;
 // This is the content of the .h file, which is where the declarations go
 class TicketManager{
     private:
