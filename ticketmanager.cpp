@@ -1,5 +1,5 @@
 // ticketmanager.cpp
-// Noah Tucker
+// Noah Tucker, Richard Stadnick, and
 // This program will determine lots of random things
 
 #include "ticketmanager.h"
