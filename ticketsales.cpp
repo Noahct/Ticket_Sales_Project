@@ -19,5 +19,3 @@ int main(){
       inputfile >> prices [i];
   }
 }  
-
-}
