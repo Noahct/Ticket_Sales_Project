@@ -11,11 +11,16 @@ using namespace std;
 
 int main(){
   
-  ifstream inputfile;
-  inputfile.open("prices.txt");
-  
-  for (int i = 0; < 14; i++)
-  {
-      inputfile >> prices [i];
-  }
-}  
+ // View Price member function
+void TicketManager::viewPrice()
+{
+	for (int row = 0; row < 15; row++)
+	{
+		for (int col = 0; col < 30; col++)
+		{
+			cout << theater[row][col].cost<< " ";
+		}
+
+		cout << endl;
+	}
+}
