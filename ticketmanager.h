@@ -22,7 +22,7 @@ class TicketManager{
         Seat seats[ROWS][COLS]; 
     public:
         TicketManager(); //load files create 2-D array of seat structs
-        string displayChart();  //represent seats by a chart of * and # chars
+        void displayChart();  //represent seats by a chart of * and # chars
         bool ticketRequest(int num_seats, int row_num, int start_seat); //determine if requested seats are available and give the seating price
         void purchase(); //purchase seats update date accordingly
         void report(); //display sales report from salesReport.dat
