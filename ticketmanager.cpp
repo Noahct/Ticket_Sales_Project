@@ -46,8 +46,18 @@ bool TicketManager::ticketRequest(int num_seats, int row_num, int start_seat){ /
     return available;
 }
 void TicketManager::purchase(){ //purchase seats update date accordingly
+    {
+	for (int row = 0; row < 15; row++)
+	{
+		for (int col = 0; col < 30; col++)
+		{
+			cout << theater[row][col].cost<< " ";
+		}
 
+		cout << endl;
+	}
 }
+
 
 void TicketManager::report(){ //display sales report from salesReport.dat
 
