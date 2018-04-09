@@ -5,13 +5,8 @@
 #include "ticketmanager.h"
 
 TicketManager::TicketManager(){ //load files create 2-D array of seat structs
-    struct Seat{
-        double price;
-        bool available;
-    };
     ifstream seat_availability;
     seat_availability.open("./SeatAvailability.dat");
-    Seat seats[ROWS][COLS];
     char ch;
     for(int row = 0; row < ROWS; row++){
         for(int col = 0; col < COLS; col++){
@@ -39,12 +34,30 @@ string TicketManager::displayChart(){  //represent seats by a chart of * and # c
 
 }
 
-double TicketManager::ticketRequest(){ //determine if requested seats are available and give the seating price
-
+bool TicketManager::ticketRequest(int num_seats, int row_num, int start_seat){ //determine if requested seats are available and give the seating price
+    bool available = true;
+    int seat = start_seat;
+    while(seat < (start_seat + num_seats) && available){
+        if(!seats[row_num][seat].available){
+            available = false;
+        }
+        seat++;
+    }
+    return available;
 }
 void TicketManager::purchase(){ //purchase seats update date accordingly
+    {
+	for (int row = 0; row < 15; row++)
+	{
+		for (int col = 0; col < 30; col++)
+		{
+			cout << theater[row][col].cost<< " ";
+		}
 
+		cout << endl;
+	}
 }
+
 
 void TicketManager::report(){ //display sales report from salesReport.dat
 

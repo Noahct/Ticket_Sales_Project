@@ -10,27 +10,46 @@ one way we can distribute the work\
 \
 programmers 1-3 each write two methods of the ticketManeger class\
 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 programmers 4-5 divide the main up evenly\
+programmers 4-5 divide the main up evenly\
 \
 since the bulk of the code is going to be in the class we may want all but one person to work on that \
 \
 \
 class ticketManeger\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 constructor //load files create 2-D array of seat structs\
+constructor //load files create 2-D array of seat structs\
 displayChart  //represent seats by a chart of * and # chars\
-ticketRequest //determine if requested seats are available and give the seating price\
+ticketRequest //determine if requested seats are available and if so give the seating price and num of seats\
 purchase //purchase seats update date accordingly\
-report //display sales report from salesReport.dat\
+report //report seats sold seats available and money collected\
 destructor //write and close files\
 \
 main\
+//create var of type TicketManeger\
 \
-\
-\
+while true\
+//display menu of options with cout\
 menu items:\
-display seats  //displayChart\
-request tickets  //ticketRequest purchase \
-sales report  //report \
-quit}
+1) display seats  //displayChart\
+2) request tickets  //ticketRequest purchase \
+3) sales report  //report \
+4) quit\
+\
+//get and validate user input with a function in = getInput(1,4)\
+\
+if menu == 1\
+TicketManeger.displayChart\
+\
+if menu == 2\
+numseats = getInput(0,30)\
+row = getInput(0,15)\
+startseat = getInput(0,30)\
+TicketManeger.ticketRequest\
+ if buy seat\
+ while not TicketManeger.purchase(money) //get input until user provides enough money\
+ money = getInput()\
+\
+if menu == 3\
+TicketManeger.report\
+\
+if menu == 4\
+exit()}
