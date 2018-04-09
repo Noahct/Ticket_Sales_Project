@@ -56,6 +56,7 @@ int main(){
 }
 
 int getInput(int min, int max){
+    int input;
     do{
         cout << "Enter a number between " << min << " and " << max << '\n';
         cin >> input;
