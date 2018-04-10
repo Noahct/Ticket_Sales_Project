@@ -1,0 +1,57 @@
+In this file I have tried to give a overview of what needs to be done more concisely than the book.
+one way we can distribute the work
+
+programmers 1-3 each write two methods of the ticketManeger class
+
+programmers 4-5 divide the main up evenly
+
+since the bulk of the code is going to be in the class we may want all but one person to work on that 
+
+primary tasks remaining:
+someone needs to take on the report method and someone needs to take on the destructor.
+I would encourage Jeremy and Petra to take on these tasks
+
+file1 ticketManeger.cpp
+class ticketManeger
+constructor //pretty much complete author Richard
+displayChart  //pretty much complete author Noah
+ticketRequest //Haven't tested yet author Richard
+purchase //in progress author Derek
+report //not started 
+destructor //not started
+
+file2 ticketManeger.h
+//contents of this file complete
+
+file3 ticketsales.cpp
+//contents minor issues remaining author Noah
+main
+//create var of type TicketManeger
+
+while true
+//display menu of options with cout
+menu items:
+1) display seats  //displayChart
+2) request tickets  //ticketRequest purchase 
+3) sales report  //report 
+4) quit
+
+//get and validate user input with a function in = getInput(1,4)
+
+if menu == 1
+TicketManeger.displayChart
+
+if menu == 2
+numseats = getInput(0,30)
+row = getInput(0,15)
+startseat = getInput(0,30)
+TicketManeger.ticketRequest
+ if buy seat
+ while not TicketManeger.purchase(money) //get input until user provides enough money
+ money = getInput()
+
+if menu == 3
+TicketManeger.report
+
+if menu == 4
+exit()

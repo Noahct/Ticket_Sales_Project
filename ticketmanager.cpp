@@ -1,5 +1,5 @@
 // ticketmanager.cpp
-// Noah Tucker
+// Noah Tucker, Richard Stadnick, and
 // This program will determine lots of random things
 
 #include "ticketmanager.h"
@@ -30,8 +30,19 @@ TicketManager::TicketManager(){ //load files create 2-D array of seat structs
     }
 }
 
-string TicketManager::displayChart(){  //represent seats by a chart of * and # chars
-
+void TicketManager::displayChart(){  //represent seats by a chart of * and # chars
+    cout << setw(39) << "012345678901234567890123456789\n";
+    for(int row = 0; row < ROWS; row++){
+        cout << setw(4) << "row " << setw(3) << row << " ";
+        for(int col = 0; col < COLS; col++){
+            if(seats[row][col].available)
+                cout << '#';
+            else{
+                cout << '*';
+            }
+        }
+        cout << '\n';
+    }
 }
 
 bool TicketManager::ticketRequest(int num_seats, int row_num, int start_seat){ //determine if requested seats are available and give the seating price
