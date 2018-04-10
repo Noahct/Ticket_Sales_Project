@@ -7,15 +7,24 @@ programmers 4-5 divide the main up evenly
 
 since the bulk of the code is going to be in the class we may want all but one person to work on that 
 
+primary tasks remaining:
+someone needs to take on the report method and someone needs to take on the destructor.
+I would encourage Jeremy and Petra to take on these tasks
 
+file1 ticketManeger.cpp
 class ticketManeger
-constructor //load files create 2-D array of seat structs
-displayChart  //represent seats by a chart of * and # chars
-ticketRequest //determine if requested seats are available and if so give the seating price and num of seats
-purchase //purchase seats update date accordingly
-report //report seats sold seats available and money collected
-destructor //write and close files
+constructor //pretty much complete author Richard
+displayChart  //pretty much complete author Noah
+ticketRequest //Haven't tested yet author Richard
+purchase //in progress author Derek
+report //not started 
+destructor //not started
 
+file2 ticketManeger.h
+//contents of this file complete
+
+file3 ticketsales.cpp
+//contents minor issues remaining author Noah
 main
 //create var of type TicketManeger
 
