@@ -1,6 +1,6 @@
 // ticketmanager.cpp
-// Noah Tucker, Richard Stadnick, and
-// This program will determine lots of random things
+// Noah Tucker, Richard Stadnick, Derek Morgan and 
+// This program is where the ticketmanager class is defined
 
 #include "ticketmanager.h"
 
@@ -57,12 +57,11 @@ bool TicketManager::ticketRequest(int num_seats, int row_num, int start_seat){ /
     return available;
 }
 void TicketManager::purchase(){ //purchase seats update date accordingly
-    {
 	for (int row = 0; row < 15; row++)
 	{
 		for (int col = 0; col < 30; col++)
 		{
-			cout << theater[row][col].cost<< " ";
+			cout << theater[row][col].cost<< " "; //did you mean seats[row][col].cost
 		}
 
 		cout << endl;
@@ -70,11 +69,11 @@ void TicketManager::purchase(){ //purchase seats update date accordingly
 }
 
 
-void TicketManager::report(){ //display sales report from salesReport.dat
+void TicketManager::report(){ //display sales report
 
 }
 
-TicketManager::~TicketManager(){ //write and close files
+TicketManager::~TicketManager(){ //write to and close files
 
 }
 
