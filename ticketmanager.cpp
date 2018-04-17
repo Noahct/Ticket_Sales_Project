@@ -48,6 +48,9 @@ void TicketManager::displayChart(){  //represent seats by a chart of * and # cha
 bool TicketManager::ticketRequest(int num_seats, int row_num, int start_seat){ //determine if requested seats are available and give the seating price
     bool available = true;
     int seat = start_seat;
+    if(start_seat > COLS || start_seat < 0 || (start_seat + num_seats) > COLS || row_num > ROWS || row_num < 0){
+        return false;
+    }
     while(seat < (start_seat + num_seats) && available){
         if(!seats[row_num][seat].available){
             available = false;
