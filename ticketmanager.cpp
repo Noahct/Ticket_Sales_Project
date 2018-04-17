@@ -5,7 +5,6 @@
 #include "ticketmanager.h"
 
 TicketManager::TicketManager(){ //load files create 2-D array of seat structs
-    ifstream seat_availability;
     seat_availability.open("./SeatAvailability.dat");
     char ch;
     for(int row = 0; row < ROWS; row++){
@@ -59,17 +58,18 @@ bool TicketManager::ticketRequest(int num_seats, int row_num, int start_seat){ /
     }
     return available;
 }
-void TicketManager::purchase(){ //purchase seats update date accordingly
-    {
-	for (int row = 0; row < 15; row++)
-	{
-		for (int col = 0; col < 30; col++)
-		{
-			cout << theater[row][col].cost<< " ";
-		}
-
-		cout << endl;
-	}
+void TicketManager::purchase(int num_seats, int row_num, int start_seat){ //purchase seats update date accordingly
+    bool available = ticketRequest(num_seats, row_num, start_seat);
+    if(!available){
+        cout << "The seats you requested are not available." << endl;
+    }else{
+        double price = get_price(num_seats, row_num, start_seat);
+        cout << fixed << showpoint << setprecision(2);
+        cout << "Your total is $" << price << endl;
+    }
+    for(int i = start_seat; i < (start_seat + num_seats); i++){
+        seats[row_num][i].available = false;
+    }
 }
 
 
@@ -77,7 +77,32 @@ void TicketManager::report(){ //display sales report from salesReport.dat
 
 }
 
-TicketManager::~TicketManager(){ //write and close files
-
+double TicketManager::get_price(int num_seats, int row_num, int start_seat){
+    bool available = ticketRequest(num_seats, row_num, start_seat);
+    double total = 0.0;
+    if(!available){
+        return total;
+    }
+    for(int i = start_seat; i < (start_seat + num_seats); i++){
+        total += seats[row_num][i].price;
+    }
+    return total;
 }
 
+TicketManager::~TicketManager(){ //write and close files
+    seat_availability.close();
+    output_seat.open("./SeatAvailability.dat");
+
+    for(int row = 0; row < ROWS; row++){
+        for(int col = 0; col < COLS; col++){
+            if(seats[row][col].available){
+                output_seat << '#';
+            }else{
+                output_seat << '*';
+            }
+        }
+        output_seat << endl;
+    }
+    
+    output_seat.close();
+}
