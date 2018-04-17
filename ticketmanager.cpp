@@ -75,7 +75,23 @@ void TicketManager::purchase(){ //purchase seats update date accordingly
 
 
 void TicketManager::report(){ //display sales report
-
+    int num_sold = 0;  //holds the number of seats that have been sold
+    int num_available = 0;  //holds the number of seats that are still available
+    double total_price = 0.00;  //holds the total amount of money collected from selling seats
+	for (int row = 0; row < ROWS; row++){
+		for (int col = 0; col < COLS; col++){
+			if (seats[row][col].available){
+			    num_available += 1;
+			    total_price += seats[row][col].price
+			}else{
+			    num_sold += 1;
+			}
+		}
+	}
+	//display the report
+	cout << num_sold << " seats have been sold." << '\n';
+	cout << num_available << " seats are still available." << '\n';
+	cout << "Total amount of money collected from selling seats: $" << total_price << '\n';
 }
 
 TicketManager::~TicketManager(){ //write to and close files
