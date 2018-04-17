@@ -59,11 +59,10 @@ bool TicketManager::ticketRequest(int num_seats, int row_num, int start_seat){ /
     return available;
 }
 void TicketManager::purchase(int num_seats, int row_num, int start_seat){ //purchase seats update date accordingly
-    bool available = ticketRequest(num_seats, row_num, start_seat);
-    if(!available){
+    double price = get_price(num_seats, row_num, start_seat);
+    if(price == 0.0){
         cout << "The seats you requested are not available." << endl;
     }else{
-        double price = get_price(num_seats, row_num, start_seat);
         cout << fixed << showpoint << setprecision(2);
         cout << "Your total is $" << price << endl;
     }
