@@ -1,8 +1,13 @@
 // ticketmanager.cpp
 // Noah Tucker, Richard Stadnick, Derek Morgan and 
 // This program is where the ticketmanager class is defined
+//This file needs more comments
 
 #include "ticketmanager.h"
+#include <fstream>
+#include <iostream>
+#include <iomanip>
+using namespace std;
 
 TicketManager::TicketManager(){ //load files create 2-D array of seat structs
     ifstream seat_availability;

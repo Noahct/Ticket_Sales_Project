@@ -4,47 +4,57 @@
 // some description
 
 
-#include "ticketmaneger.h"
+#include "ticketmanager.h"
 #include <iostream>
 #include <string>
 using namespace std;
 
-int getInput(int, int);  //declare getInput func
+double getInput(double, double);  //declare getInput func
 
 int main(){
     //create var of type TicketManeger
-    TicketManeger manager;  //will not work until class constructor hes been created
-
+    TicketManager manager;  //will not work until class constructor hes been created
+    
+    //loop until quits program
     while (true){
         //display menu of options with cout
         cout << "menu items:\n" << "1) display seats\n" << "2) request tickets\n" << "3) sales report\n" << "4) quit\n";
 
         //get and validate user input with a function
+        cout << "Enter menu option. (1, 4) ";
         int menuItem = getInput(1, 4);
 
         if (menuItem == 1)  
             manager.displayChart();  //use the displayChart() method in the TicketManeger class
 
         if (menuItem == 2){  //ticketRequest purchase 
-            //bool status = false;  //do seats exist and are they available
+            //bool status = false;  //a price of -1 indicates that seats don't exist or are not available
             string mesg;
             string buy;
-            double money;
+            double payment;
             while (true){
+                cout << "How many seat would you like to buy? (0, 30) ";
                 int numseats = getInput(0, 30);
+                cout << "Enter a row number. (0, 15) ";
                 int row = getInput(0, 15);
+                cout << "Enter the index of the leftmost seat. (0, 30) ";
                 int startseat = getInput(0, 30);
-                double price = manager.ticketRequest(numseats, row, startseat);
-                if (price != -1){  //a price of -1 indicates that seats don't exist or are not available
-                    cout << "good message" << '\n';
+                if (manager.ticketRequest(numseats, row, startseat)){  //do seats exist and are they available
+                    double price = 20.00;//manager.getPrice();  //get the price of the requested seats
+                    cout << "These seats will cost $" << price << '\n';
                     cout << "Would you like to buy these seats?" << '\n';
                     cin >> buy;
-                    if (buy == "y" or buy == "yes"){
+                    if (buy == "y" or buy == "yes"){  
                         do{ //get input until user provides enough money to buy seats
-                            money = getInput(0, price);
-                        }while (not manager.purchase(money));
+                            cout << "Enter your payment. If you want to reconsider enter -1. ";
+                            payment = getInput(0, price);
+                            if (payment == price){
+                                cout << "purchased\n"; //manager.purchase(payment);  //purchase seats
+                                break;
+                            }
+                        }while (payment != -1);
                     }else{
-                        cout << "bad message" << '\n';
+                        cout << "You entered seats that do not exist or have already been sold." << '\n';
                         break;
                     }
                 }
@@ -59,8 +69,8 @@ int main(){
 	}
 }
 
-int getInput(int min, int max){
-    int input;
+double getInput(double min, double max){
+    double input;
     do{
         cout << "Enter a number between " << min << " and " << max << '\n';
         cin >> input;
