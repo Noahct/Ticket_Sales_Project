@@ -20,12 +20,15 @@ struct Seat{
 class TicketManager{
     private:
         Seat seats[ROWS][COLS]; 
+        ifstream seat_availability;
+        ofstream output_seat;
     public:
         TicketManager(); //load files create 2-D array of seat structs
         void displayChart();  //represent seats by a chart of * and # chars
         bool ticketRequest(int num_seats, int row_num, int start_seat); //determine if requested seats are available and give the seating price
-        void purchase(); //purchase seats update date accordingly
+        void purchase(int num_seats, int row_num, int start_seat); //purchase seats update date accordingly
         void report(); //display sales report from salesReport.dat
+        double get_price(int num_seats, int row_num, int start_seat);
         ~TicketManager(); //write and close files
 
 };
