@@ -1,8 +1,13 @@
 // ticketmanager.cpp
-// Noah Tucker, Richard Stadnick, and
-// This program will determine lots of random things
+// Noah Tucker, Richard Stadnick, Derek Morgan and 
+// This program is where the ticketmanager class is defined
+//This file needs more comments
 
 #include "ticketmanager.h"
+#include <fstream>
+#include <iostream>
+#include <iomanip>
+using namespace std;
 
 TicketManager::TicketManager(){ //load files create 2-D array of seat structs
     seat_availability.open("./SeatAvailability.dat");
@@ -58,6 +63,7 @@ bool TicketManager::ticketRequest(int num_seats, int row_num, int start_seat){ /
     }
     return available;
 }
+
 void TicketManager::purchase(int num_seats, int row_num, int start_seat){ //purchase seats update date accordingly
     double price = get_price(num_seats, row_num, start_seat);
     if(price == 0.0){
@@ -72,7 +78,7 @@ void TicketManager::purchase(int num_seats, int row_num, int start_seat){ //purc
 }
 
 
-void TicketManager::report(){ //display sales report from salesReport.dat
+void TicketManager::report(){ //display sales report
 
 }
 
@@ -91,6 +97,7 @@ double TicketManager::get_price(int num_seats, int row_num, int start_seat){
 TicketManager::~TicketManager(){ //write and close files
     seat_availability.close();
     output_seat.open("./SeatAvailability.dat");
+
 
     for(int row = 0; row < ROWS; row++){
         for(int col = 0; col < COLS; col++){
