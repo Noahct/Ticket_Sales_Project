@@ -4,35 +4,28 @@
 //This file needs more comments
 
 #include "ticketmanager.h"					// include header file ticketmanager.h, by Richard S
-#include <fstream>
-#include <iostream>
-#include <iomanip>
-using namespace std;
 
 						/************************
 						*	Constructor	*
 						************************/
 TicketManager::TicketManager(){ 				//load files create 2-D array of seat structs
     seat_availability.open("./SeatAvailability.dat");		// open Seat Availability file
+    prices.open("./SeatPrices.dat");// Open SeatPrices file
     char ch;
+    double price_array[ROWS];// Create an array to hold the price information
+    for(int i = 0; i < ROWS; i++){
+        prices >> price_array[i];// fill the price array
+    }
     for(int row = 0; row < ROWS; row++){			// step through rows
         for(int col = 0; col < COLS; col++){			// and columns
             seat_availability >> ch;
             if(ch == '#'){
                 seats[row][col].available = true;		// set availability to true if '#'
+                seats[row][col].price = price_array[row];// Assign price to row
             }else if(ch == '*'){
                 seats[row][col].available = false;		// set availability to false if '*'
+                seats[row][col].price = price_array[row];// Assign pricec to row
             }
-            if(row < 4){					// loops for seat pricing tiers
-                seats[row][col].price = 12.50;
-            }else if(row >= 4 && row < 8){
-                seats[row][col].price = 10.00;
-            }else if(row >= 8 && row < 12){
-                seats[row][col].price = 8.00;
-            }else{
-                seats[row][col].price = 5.00;
-            }
-            
         }
     }
 }
@@ -144,6 +137,7 @@ double TicketManager::get_price(int num_seats, int row_num, int start_seat){	// 
 						************************/
 TicketManager::~TicketManager(){ 						//write and close files
     seat_availability.close();
+    prices.close();
     output_seat.open("./SeatAvailability.dat");
 
 

@@ -21,6 +21,7 @@ class TicketManager{
     private:
         Seat seats[ROWS][COLS]; 
         ifstream seat_availability;
+        ifstream prices;
         ofstream output_seat;
     public:
         TicketManager(); //load files create 2-D array of seat structs
