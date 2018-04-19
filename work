@@ -1,0 +1,161 @@
+#pragma once
+// ticketmaneger.h
+// This program is a header file that that reads manipulates and saves data to and from external files
+// Jeremy Stocker
+// 3 April 2018
+
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+class TicketManeger
+{
+public:
+	// --Var---
+	char seats[15][30];        // Row | Columbs
+	float prices[15];         // Sorage for price data
+
+	string fname = "SeatAvailability.dat";    // File to open
+	string pfile = "SeatPrices.dat";          // File to open
+
+	float cost = 0;                             //stores the over all cost of transactions
+
+
+												//---Memberfunctions------------------------------------------------------------------------------------------------------------
+	void getSeat()                               // This Memberfunction Loads Data from SeatAvailability.dat into an array
+	{
+		ifstream seating;                         // creates file class object for seating
+		seating.open(fname);                     // Checks for error and   
+		if (seating.fail())                      //Shut down program if the file does not open properly 
+		{
+			cerr << "File Error" << endl;
+			exit(1);
+		}
+
+		if (seating.is_open())   cout << "File Name :" << fname << endl;             // Test if file is open
+		{
+			for (int row = 0; row < 15; row++)
+			{
+
+				for (int col = 0; col < 30; col++)
+				{
+					seating >> seats[row][col];                                    // fills array with data from file
+
+				}
+
+			}
+
+			seating.close();                                        // close file
+		}
+
+	}
+
+	void getPrice()                                   // This Memberfunction Loads Data from SeatPrice.dat into an array
+	{
+		ifstream pricefile;                       // creates file class object for prices
+		pricefile.open(pfile);                            // Checks for error and   
+		if (pricefile.fail())                             //Shut down program if the file does not open properly 
+		{
+			cerr << "File Error" << endl;
+			exit(1);
+		}
+
+		if (pricefile.is_open())   cout << "Current pirce list :" << fname << endl;             // Test if file is open
+		{
+			for (int row = 0; row < 15; row++)
+			{
+				pricefile >> prices[row];                 // fills array with data from file
+
+			}
+
+			pricefile.close();                             // close file
+		}
+
+	}
+
+	void printSeat()                                        // This Memberfunction diplays the Data in the seats array
+	{
+
+		cout << "  |01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|" << endl; //Referance markers
+		for (int row = 0; row < 15; row++)
+		{
+			if (row < 9)cout << " ";
+			cout << row + 1 << "|";
+			for (int col = 0; col < 30; col++)
+			{
+				cout << " " << seats[row][col] << " ";
+
+			}
+			cout << "---$" << prices[row] << endl;
+
+
+		}
+	}
+
+
+
+	float buyseat(int row, int col)
+	{
+		int yn = 0;
+
+		if (seats[row][col] == '#')
+		{
+			seats[row][col] = '*';
+			cost = cost + prices[row];
+		}
+
+		else
+			cout << "This seat is unavaiable" << endl;
+
+		return(cost);
+	}
+
+	float retseat(int row, int col)
+	{
+		int yn = 0;
+
+		if (seats[row][col] == '*')
+		{
+			seats[row][col] = '#';
+			cost = cost - prices[row];
+		}
+
+		else
+			cout << "You do not own this seat" << endl;
+
+		return(cost);
+	}
+
+	string saveSeats()
+	{
+		ofstream seating;                         // creates file class object for seating
+		seating.open(fname);                     // Checks for error and   
+		if (seating.fail())                      //Shut down program if the file does not open properly 
+		{
+			cerr << "File Error" << endl;
+			exit(1);
+		}
+
+		if (seating.is_open())   cout << "File Name :" << fname << endl;             // Test if file is open
+		{
+			for (int row = 0; row < 15; row++)
+			{
+
+				for (int col = 0; col < 30; col++)
+				{
+					seating << seats[row][col];                                    // fills fill with data from array
+
+				}
+
+			}
+
+			seating.close();                                        // close file
+		}
+		return(fname);
+	};
+
+
+};
