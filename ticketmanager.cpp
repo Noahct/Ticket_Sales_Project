@@ -76,9 +76,9 @@ bool TicketManager::ticketRequest(int num_seats, int row_num, int start_seat){
 }
 
 
-					/********************************************************
-					*	purchase seats and update date accordingly	*
-					********************************************************/
+					/****************************************************************
+					*	purchase seats and update availability accordingly	*
+					****************************************************************/
 void TicketManager::purchase(int num_seats, int row_num, int start_seat){
     double price = get_price(num_seats, row_num, start_seat);
     if(price == 0.0){
