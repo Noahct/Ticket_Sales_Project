@@ -132,7 +132,7 @@ void TicketManager::report(){ 					//display sales report
 					************************************************/
 double TicketManager::get_price(int num_seats, int row_num, int start_seat){	// calculating/retrieving
     double total = 0.0;
-        for(int i = start_seat; i < (start_seat + num_seats); i++){			// accumulating price of available requested seats
+    for(int i = start_seat; i < (start_seat + num_seats); i++){			// accumulating price of available requested seats
         total += seats[row_num][i].price;
     }
     return total;
