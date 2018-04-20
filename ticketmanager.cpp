@@ -38,7 +38,7 @@ TicketManager::TicketManager(){ 				//load files create 2-D array of seat struct
 void TicketManager::displayChart(){
     cout << setw(39) << "012345678901234567890123456789\n";
     for(int row = 0; row < ROWS; row++){
-        cout << setw(4) << "row " << setw(3) << row << " ";
+        cout << setw(4) << "row " << setw(3) << row - 1 << " ";
         for(int col = 0; col < COLS; col++){
             if(seats[row][col].available)
                 cout << '#';
@@ -48,6 +48,7 @@ void TicketManager::displayChart(){
         }
         cout << '\n';
     }
+    cout << '\n';
 }
 
 
