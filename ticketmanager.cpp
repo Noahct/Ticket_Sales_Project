@@ -4,12 +4,9 @@
 //This file needs more comments
 
 #include "ticketmanager.h"
-#include <fstream>
-#include <iostream>
-#include <iomanip>
-using namespace std;
 
 TicketManager::TicketManager(){ //load files create 2-D array of seat structs
+    x = 2;
     seat_availability.open("./SeatAvailability.dat");
     char ch;
     for(int row = 0; row < ROWS; row++){
@@ -35,6 +32,7 @@ TicketManager::TicketManager(){ //load files create 2-D array of seat structs
 }
 
 void TicketManager::displayChart(){  //represent seats by a chart of * and # chars
+    x=3;
     cout << setw(39) << "012345678901234567890123456789\n";
     for(int row = 0; row < ROWS; row++){
         cout << setw(4) << "row " << setw(3) << row << " ";
@@ -106,6 +104,7 @@ void TicketManager::report(){ //display sales report
 	cout << setw(20) << left << seatsAvailable << setw(22) << left << seatsUnavailable;
 	cout << setprecision(2) << fixed << showpoint;
 	cout << setw(10) << totalSales << endl;
+	cout << x;
 }
 
 double TicketManager::get_price(int num_seats, int row_num, int start_seat){
@@ -118,6 +117,18 @@ double TicketManager::get_price(int num_seats, int row_num, int start_seat){
         total += seats[row_num][i].price;
     }
     return total;
+}
+
+void TicketManager::reset(){ //reset all seats to an available status
+    for(int row = 0; row < ROWS; row++){
+        for(int col = 0; col < COLS; col++){
+            //cout << seats[row][col].price << " ";
+            //cout << "x";
+            if (not seats[row][col].available){
+                seats[row][col].available = true;
+            }
+        }
+    }
 }
 
 TicketManager::~TicketManager(){ //write and close files

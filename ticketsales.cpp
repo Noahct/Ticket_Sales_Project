@@ -70,7 +70,16 @@ int main(){
         if (menuItem == 3)  
             manager.report();  //display a sales report 
 
-        if (menuItem == 4)  //quit the program
+        if (menuItem == 4){
+            cout << "Worning: you are about to reset data.  All sales and seating information will be lost" << '\n';
+            cout << "Are you sure? ";
+            string rs;
+            cin >> rs;
+            if (rs == "y" or rs == "yes")
+                manager.reset();  //reset all seats to an available status
+        }
+
+        if (menuItem == 5)  //quit the program
             return 0;
 	}
 }

@@ -19,6 +19,7 @@ struct Seat{
 // This is the content of the .h file, which is where the declarations go
 class TicketManager{
     private:
+        int x;
         Seat seats[ROWS][COLS]; 
         ifstream seat_availability;
         ofstream output_seat;
@@ -29,6 +30,7 @@ class TicketManager{
         void purchase(int num_seats, int row_num, int start_seat); //purchase seats update date accordingly
         void report(); //display sales report from salesReport.dat
         double get_price(int num_seats, int row_num, int start_seat);
+        void reset();
         ~TicketManager(); //write and close files
 
 };
