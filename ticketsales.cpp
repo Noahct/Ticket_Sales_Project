@@ -62,7 +62,7 @@ int main(){
         }
 
         if (menuItem == 3)  
-            manager.report()  //display a sales report 
+            manager.report();  //display a sales report 
 
         if (menuItem == 4)  //quit the program
             return 0;
