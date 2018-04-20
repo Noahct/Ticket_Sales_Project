@@ -19,7 +19,6 @@ struct Seat{
 // This is the content of the .h file, which is where the declarations go
 class TicketManager{
     private:
-        int x;
         Seat seats[ROWS][COLS]; 
         ifstream seat_availability;
         ifstream prices;

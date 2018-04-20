@@ -58,7 +58,7 @@ int main(){
                     }else{
                         cout << "Buy different seating? ";
                         cin >> buy;
-                        if (buy != "y" or buy != "yes")
+                        if (buy != "y" and buy != "yes")
                             break;
                     }
                 }else{
