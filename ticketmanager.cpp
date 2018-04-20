@@ -4,35 +4,28 @@
 //This file needs more comments
 
 #include "ticketmanager.h"					// include header file ticketmanager.h, by Richard S
-#include <fstream>
-#include <iostream>
-#include <iomanip>
-using namespace std;
 
-						/************************
-						*	Constructor	*
-						************************/
+						/********************************
+						*	Constructor	* Rich Stadnick *
+						********************************/
 TicketManager::TicketManager(){ 				//load files create 2-D array of seat structs
     seat_availability.open("./SeatAvailability.dat");		// open Seat Availability file
+    prices.open("./SeatPrices.dat");// Open SeatPrices file
     char ch;
+    double price_array[ROWS];// Create an array to hold the price information
+    for(int i = 0; i < ROWS; i++){
+        prices >> price_array[i];// fill the price array
+    }
     for(int row = 0; row < ROWS; row++){			// step through rows
         for(int col = 0; col < COLS; col++){			// and columns
             seat_availability >> ch;
             if(ch == '#'){
                 seats[row][col].available = true;		// set availability to true if '#'
+                seats[row][col].price = price_array[row];// Assign price to row
             }else if(ch == '*'){
                 seats[row][col].available = false;		// set availability to false if '*'
+                seats[row][col].price = price_array[row];// Assign pricec to row
             }
-            if(row < 4){					// loops for seat pricing tiers
-                seats[row][col].price = 12.50;
-            }else if(row >= 4 && row < 8){
-                seats[row][col].price = 10.00;
-            }else if(row >= 8 && row < 12){
-                seats[row][col].price = 8.00;
-            }else{
-                seats[row][col].price = 5.00;
-            }
-            
         }
     }
 }
@@ -59,6 +52,7 @@ void TicketManager::displayChart(){
 
 			/********************************************************************************
 			*	determine if requested seats are available and give the seating price	*
+            *	Rich Stadnick                                                           *
 			********************************************************************************/
 bool TicketManager::ticketRequest(int num_seats, int row_num, int start_seat){
     bool available = true;
@@ -78,15 +72,9 @@ bool TicketManager::ticketRequest(int num_seats, int row_num, int start_seat){
 
 					/****************************************************************
 					*	purchase seats and update availability accordingly	*
+                    *	Rich Stadnick                                       *
 					****************************************************************/
 void TicketManager::purchase(int num_seats, int row_num, int start_seat){
-    double price = get_price(num_seats, row_num, start_seat);
-    if(price == 0.0){
-        cout << "The seats you requested are not available." << endl;		// display seats unavailable if price evaluates to $0
-    }else{
-        cout << fixed << showpoint << setprecision(2);
-        cout << "Your total is $" << price << endl;				// display sales total of available seats
-    }
     for(int i = start_seat; i < (start_seat + num_seats); i++){			// set availability of purchased seats to false
         seats[row_num][i].available = false;
     }
@@ -129,6 +117,7 @@ void TicketManager::report(){ 					//display sales report
 
 					/************************************************
 					*	getting price of requested seats	*
+                    *	Rich Stadnick                       *
 					************************************************/
 double TicketManager::get_price(int num_seats, int row_num, int start_seat){	// calculating/retrieving
     double total = 0.0;
@@ -140,12 +129,13 @@ double TicketManager::get_price(int num_seats, int row_num, int start_seat){	// 
 
 
 						/************************
-						*	Destructor	*
+						*	Destructor	        *
+                        *	Rich Stadnick       *
 						************************/
 TicketManager::~TicketManager(){ 						//write and close files
     seat_availability.close();
+    prices.close();
     output_seat.open("./SeatAvailability.dat");
-
 
     for(int row = 0; row < ROWS; row++){					// writing to SeatAvailability.dat
         for(int col = 0; col < COLS; col++){					// stepping through seats array
