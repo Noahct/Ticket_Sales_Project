@@ -18,29 +18,30 @@ int main(){
     //loop until quits program
     while (true){
         //display menu of options with cout
-        cout << "menu items:\n" << "1) display seats\n" << "2) request tickets\n" << "3) sales report\n" << "4) quit\n";
+        cout << "menu items:\n" << "1) display seats\n" << "2) request tickets\n" << "3) sales report\n" << "4) reset data\n" << "5) quit\n";
 
         //get and validate user input with a function
-        cout << "Enter menu option. (1, 4) ";
-        int menuItem = getInput(1, 4);
+        cout << "Enter menu option. ";
+        int menuItem = getInput(1, 5);
 
         if (menuItem == 1)  
-            manager.displayChart();  //use the displayChart() method in the TicketManeger class
+            //display a chart of seating a '#' represents available seats a '*' represents unavailable seats
+            manager.displayChart();  
 
-        if (menuItem == 2){  //ticketRequest purchase 
-            //bool status = false;  //a price of -1 indicates that seats don't exist or are not available
-            string mesg;
-            string buy;
-            double payment;
-            while (true){
+        if (menuItem == 2){  //request and buy seats
+            //string mesg;  
+            string buy;  //holds a string that determines if a user wants to buy certain seats
+            bool puchased = false;  //determines whether seats have been purchased yet
+            double payment;  //holds the users payment
+            while (not puchased){
                 cout << "How many seat would you like to buy? (0, 30) ";
                 int numseats = getInput(0, 30);
                 cout << "Enter a row number. (0, 15) ";
-                int row = getInput(0, 15);
+                int row = getInput(0, 15) - 1;
                 cout << "Enter the index of the leftmost seat. (0, 30) ";
-                int startseat = getInput(0, 30);
+                int startseat = getInput(0, 30) - 1;
                 if (manager.ticketRequest(numseats, row, startseat)){  //do seats exist and are they available
-                    double price = 20.00;//manager.getPrice();  //get the price of the requested seats
+                    double price = manager.get_price(numseats, row, startseat);  //get the price of the requested seats
                     cout << "These seats will cost $" << price << '\n';
                     cout << "Would you like to buy these seats?" << '\n';
                     cin >> buy;
@@ -49,14 +50,19 @@ int main(){
                             cout << "Enter your payment. If you want to reconsider enter -1. ";
                             payment = getInput(0, price);
                             if (payment == price){
-                                cout << "purchased\n"; //manager.purchase(payment);  //purchase seats
+                                manager.purchase(numseats, row, startseat); //cout << "purchased\n";  //purchase seats
+                                puchased = true;
                                 break;
                             }
-                        }while (payment != -1);
+                        }while (payment != -1);  //a payment of -1 indicates the has changed his mind
                     }else{
-                        cout << "You entered seats that do not exist or have already been sold." << '\n';
-                        break;
+                        cout << "Buy different seating? ";
+                        cin >> buy;
+                        if (buy != "y" or buy != "yes")
+                            break;
                     }
+                }else{
+                    cout << "You entered seats that do not exist or have already been sold." << '\n';
                 }
             }
         }
@@ -64,7 +70,16 @@ int main(){
         if (menuItem == 3)  
             manager.report();  //display a sales report 
 
-        if (menuItem == 4)  //quit the program
+        if (menuItem == 4){
+            cout << "Worning: you are about to reset data.  All sales and seating information will be lost" << '\n';
+            cout << "Are you sure? ";
+            string rs;
+            cin >> rs;
+            if (rs == "y" or rs == "yes")
+                manager.reset();  //reset all seats to an available status
+        }
+
+        if (menuItem == 5)  //quit the program
             return 0;
 	}
 }

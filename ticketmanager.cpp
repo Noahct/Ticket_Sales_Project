@@ -3,6 +3,7 @@
 // This program is where the ticketmanager class is defined
 //This file needs more comments
 
+
 #include "ticketmanager.h"					// include header file ticketmanager.h, by Richard S
 
 						/********************************
@@ -11,6 +12,7 @@
 TicketManager::TicketManager(){ 				//load files create 2-D array of seat structs
     seat_availability.open("./SeatAvailability.dat");		// open Seat Availability file
     prices.open("./SeatPrices.dat");// Open SeatPrices file
+          
     char ch;
     double price_array[ROWS];// Create an array to hold the price information
     for(int i = 0; i < ROWS; i++){
@@ -29,7 +31,6 @@ TicketManager::TicketManager(){ 				//load files create 2-D array of seat struct
         }
     }
 }
-
 
 				/************************************************************************
 				*	represent seats/availability by a chart/array of * and # chars	*
@@ -112,6 +113,7 @@ void TicketManager::report(){ 					//display sales report
 	cout << setw(20) << left << seatsAvailable << setw(22) << left << seatsUnavailable;
 	cout << setprecision(2) << fixed << showpoint;
 	cout << setw(10) << totalSales << endl;
+	cout << x;
 }
 
 
@@ -127,6 +129,17 @@ double TicketManager::get_price(int num_seats, int row_num, int start_seat){	// 
     return total;
 }
 
+void TicketManager::reset(){ //reset all seats to an available status
+    for(int row = 0; row < ROWS; row++){
+        for(int col = 0; col < COLS; col++){
+            //cout << seats[row][col].price << " ";
+            //cout << "x";
+            if (not seats[row][col].available){
+                seats[row][col].available = true;
+            }
+        }
+    }
+}
 
 						/************************
 						*	Destructor	        *
