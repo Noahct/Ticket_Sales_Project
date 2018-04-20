@@ -50,10 +50,10 @@ void TicketManager::displayChart(){
 }
 
 
-			/****************************************************************************
+			/********************************************************************************
 			*	determine if requested seats are available and give the seating price	*
             *	Rich Stadnick                                                           *
-			****************************************************************************/
+			********************************************************************************/
 bool TicketManager::ticketRequest(int num_seats, int row_num, int start_seat){
     bool available = true;
     int seat = start_seat;
@@ -70,10 +70,10 @@ bool TicketManager::ticketRequest(int num_seats, int row_num, int start_seat){
 }
 
 
-					/********************************************************
+					/****************************************************************
 					*	purchase seats and update availability accordingly	*
                     *	Rich Stadnick                                       *
-					********************************************************/
+					****************************************************************/
 void TicketManager::purchase(int num_seats, int row_num, int start_seat){
     for(int i = start_seat; i < (start_seat + num_seats); i++){			// set availability of purchased seats to false
         seats[row_num][i].available = false;
@@ -115,10 +115,10 @@ void TicketManager::report(){ 					//display sales report
 }
 
 
-					/****************************************
+					/************************************************
 					*	getting price of requested seats	*
                     *	Rich Stadnick                       *
-					****************************************/
+					************************************************/
 double TicketManager::get_price(int num_seats, int row_num, int start_seat){	// calculating/retrieving
     double total = 0.0;
     for(int i = start_seat; i < (start_seat + num_seats); i++){			// accumulating price of available requested seats
