@@ -6,6 +6,7 @@
 
 #include "ticketmanager.h"
 #include <iostream>
+#include <algorithm>
 #include <string>
 using namespace std;
 
@@ -34,30 +35,32 @@ int main(){
             bool puchased = false;  //determines whether seats have been purchased yet
             double payment;  //holds the users payment
             while (not puchased){
-                cout << "How many seat would you like to buy? (0, 30) ";
-                int numseats = getInput(0, 30);
-                cout << "Enter a row number. (0, 15) ";
-                int row = getInput(0, 15) - 1;
+                cout << "How many seat would you like to buy? (1, 30) ";
+                int numseats = getInput(1, 30);
+                cout << "Enter a row number. (1, 15) ";
+                int row = getInput(1, 15) - 1;
                 cout << "Enter the index of the leftmost seat. (0, 30) ";
-                int startseat = getInput(0, 30) - 1;
+                int startseat = getInput(1, 30) - 1;
                 if (manager.ticketRequest(numseats, row, startseat)){  //do seats exist and are they available
                     double price = manager.get_price(numseats, row, startseat);  //get the price of the requested seats
                     cout << "These seats will cost $" << price << '\n';
                     cout << "Would you like to buy these seats?" << '\n';
                     cin >> buy;
+                    transform(buy.begin(), buy.end(), buy.begin(), ::tolower);
                     if (buy == "y" or buy == "yes"){  
                         do{ //get input until user provides enough money to buy seats
-                            cout << "Enter your payment. If you want to reconsider enter -1. ";
+                            cout << "Enter your payment. If you want to reconsider enter 0. ";
                             payment = getInput(0, price);
                             if (payment == price){
                                 manager.purchase(numseats, row, startseat); //cout << "purchased\n";  //purchase seats
                                 puchased = true;
                                 break;
                             }
-                        }while (payment != -1);  //a payment of -1 indicates the has changed his mind
+                        }while (payment != 0);  //a payment of 0 indicates the has changed his mind
                     }else{
                         cout << "Buy different seating? ";
                         cin >> buy;
+                        transform(buy.begin(), buy.end(), buy.begin(), ::tolower);
                         if (buy != "y" and buy != "yes")
                             break;
                     }
@@ -71,10 +74,11 @@ int main(){
             manager.report();  //display a sales report 
 
         if (menuItem == 4){
-            cout << "Worning: you are about to reset data.  All sales and seating information will be lost" << '\n';
+            cout << "Warning: you are about to reset data.  All sales and seating information will be lost" << '\n';
             cout << "Are you sure? ";
             string rs;
             cin >> rs;
+            transform(rs.begin(), rs.end(), rs.begin(), ::tolower);
             if (rs == "y" or rs == "yes")
                 manager.reset();  //reset all seats to an available status
         }
