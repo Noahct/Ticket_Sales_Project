@@ -1,14 +1,14 @@
 // ticketmanager.cpp
 // Noah Tucker, Richard Stadnick, Derek Morgan and Petra Gates
 // This program is where the ticketmanager class is defined
-//This file needs more comments
 
 
 #include "ticketmanager.h"					// include header file ticketmanager.h, by Richard S
 
-						/****************************************
-						*	Constructor	* Rich Stadnick *
-						****************************************/
+/*************************
+*   Constructor          * 
+*   Rich Stadnick        *
+*************************/
 TicketManager::TicketManager(){ 				//load files create 2-D array of seat structs
     seat_availability.open("./SeatAvailability.dat");		// open Seat Availability file
     prices.open("./SeatPrices.dat");// Open SeatPrices file
@@ -32,15 +32,16 @@ TicketManager::TicketManager(){ 				//load files create 2-D array of seat struct
     }
 }
 
-				/************************************************************************
-				*	represent seats/availability by a chart/array of * and # chars	*
-				************************************************************************/
+/************************************************************************
+*   represent seats/availability by a chart/array of * and # chars      *
+*   Noah Tucker                                                         *
+************************************************************************/
 void TicketManager::displayChart(){
     // cout << setw(39) << "012345678901234567890123456789\n";	// original column number display
-cout << "column    " << "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20";		// column display mod PG
-cout << " 21 22 23 24 25 26 27 28 29 30\n";
+    cout << "column    " << "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20";		// column display mod PG
+    cout << " 21 22 23 24 25 26 27 28 29 30\n";
     for(int row = 0; row < ROWS; row++){
-        cout << setw(4) << "row " << setw(3) << row - 1 << " ";
+        cout << setw(4) << "row " << setw(3) << row + 1 << " ";
         for(int col = 0; col < COLS; col++){
 		cout << setw(3);				// column spacing mod PG
             if(seats[row][col].available)
@@ -54,11 +55,10 @@ cout << " 21 22 23 24 25 26 27 28 29 30\n";
     cout << '\n';
 }
 
-
-			/********************************************************************************
-			*	determine if requested seats are available and give the seating price	*
-            		*	Rich Stadnick                                                           *
-			********************************************************************************/
+/********************************************************************************
+*	determine if requested seats are available and give the seating price       *
+*   Rich Stadnick                                                               *
+********************************************************************************/
 bool TicketManager::ticketRequest(int num_seats, int row_num, int start_seat){
     bool available = true;
     int seat = start_seat;
@@ -75,10 +75,10 @@ bool TicketManager::ticketRequest(int num_seats, int row_num, int start_seat){
 }
 
 
-					/****************************************************************
-					*	purchase seats and update availability accordingly	*
-                    			*	Rich Stadnick                                       	*
-					****************************************************************/
+/****************************************************************
+*	purchase seats and update availability accordingly          *
+*	Rich Stadnick                                               *
+****************************************************************/
 void TicketManager::purchase(int num_seats, int row_num, int start_seat){
     for(int i = start_seat; i < (start_seat + num_seats); i++){			// set availability of purchased seats to false
         seats[row_num][i].available = false;
@@ -86,10 +86,10 @@ void TicketManager::purchase(int num_seats, int row_num, int start_seat){
 }
 
 
-			/************************************************************************************************
-			*	 sales report method, displaying seats available/unavailable and total sales 		*
-			*				Petra Gates w/ Suggestions from Noah Tucker			*
-			************************************************************************************************/
+/************************************************************************************************
+*   sales report method, displaying seats available/unavailable and total sales                 *
+*   Petra Gates w/ Suggestions from Noah Tucker                                                 *
+************************************************************************************************/
 void TicketManager::report(){ 					//display sales report
     int seatsAvailable = 0,					// accumulators
 		seatsUnavailable = 0;
@@ -118,14 +118,13 @@ void TicketManager::report(){ 					//display sales report
 	cout << setw(20) << left << seatsAvailable << setw(22) << left << seatsUnavailable;
 	cout << setprecision(2) << fixed << showpoint;
 	cout << setw(10) << "$" << totalSales << endl;
-	cout << /*x*/ endl;	// what's up with int x anyway?
 }
 
 
-					/************************************************
-					*	getting price of requested seats	*
-                    			*	Rich Stadnick                       	*
-					************************************************/
+/************************************************
+*   getting price of requested seats            *
+*   Rich Stadnick                               *
+************************************************/
 double TicketManager::get_price(int num_seats, int row_num, int start_seat){	// calculating/retrieving
     double total = 0.0;
     for(int i = start_seat; i < (start_seat + num_seats); i++){			// accumulating price of available requested seats
@@ -134,11 +133,13 @@ double TicketManager::get_price(int num_seats, int row_num, int start_seat){	// 
     return total;
 }
 
-void TicketManager::reset(){ //reset all seats to an available status
+/****************************************************
+*	reset all seats to an available status          *
+*	Noah Tucker                                   *
+****************************************************/
+void TicketManager::reset(){
     for(int row = 0; row < ROWS; row++){
         for(int col = 0; col < COLS; col++){
-            //cout << seats[row][col].price << " ";
-            //cout << "x";
             if (not seats[row][col].available){
                 seats[row][col].available = true;
             }
@@ -146,10 +147,10 @@ void TicketManager::reset(){ //reset all seats to an available status
     }
 }
 
-						/************************
-						*	Destructor	*
-                        			*	Rich Stadnick	*
-						************************/
+/************************
+*	Destructor          *
+*	Rich Stadnick       *
+************************/
 TicketManager::~TicketManager(){ 						//write and close files
     seat_availability.close();
     prices.close();

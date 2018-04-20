@@ -1,0 +1,170 @@
+menu items:
+1) display seats
+2) request tickets
+3) sales report
+4) reset data
+5) quit
+Enter menu option. Enter a number between 1 and 5
+1
+column    01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
+row   1   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row   2   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row   3   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row   4   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row   5   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row   6   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row   7   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row   8   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row   9   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row  10   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row  11   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row  12   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row  13   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row  14   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row  15   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+
+menu items:
+1) display seats
+2) request tickets
+3) sales report
+4) reset data
+5) quit
+Enter menu option. Enter a number between 1 and 5
+2
+How many seat would you like to buy? (0, 30) Enter a number between 0 and 30
+5
+Enter a row number. (0, 15) Enter a number between 0 and 15
+5
+Enter the index of the leftmost seat. (0, 30) Enter a number between 0 and 30
+5
+These seats will cost $50
+Would you like to buy these seats?
+n
+Buy different seating? n
+menu items:
+1) display seats
+2) request tickets
+3) sales report
+4) reset data
+5) quit
+Enter menu option. Enter a number between 1 and 5
+2
+How many seat would you like to buy? (0, 30) Enter a number between 0 and 30
+5
+Enter a row number. (0, 15) Enter a number between 0 and 15
+4
+Enter the index of the leftmost seat. (0, 30) Enter a number between 0 and 30
+5
+These seats will cost $62.5
+Would you like to buy these seats?
+n
+Buy different seating? y
+menu items:
+1) display seats
+2) request tickets
+3) sales report
+4) reset data
+5) quit
+Enter menu option. Enter a number between 1 and 5
+2
+How many seat would you like to buy? (0, 30) Enter a number between 0 and 30
+5
+Enter a row number. (0, 15) Enter a number between 0 and 15
+4
+Enter the index of the leftmost seat. (0, 30) Enter a number between 0 and 30
+5
+These seats will cost $62.5
+Would you like to buy these seats?
+y
+Enter your payment. If you want to reconsider enter -1. Enter a number between 0 and 62.5
+62.5
+menu items:
+1) display seats
+2) request tickets
+3) sales report
+4) reset data
+5) quit
+Enter menu option. Enter a number between 1 and 5
+1
+column    01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
+row   1   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row   2   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row   3   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row   4   #  #  #  #  *  *  *  *  *  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row   5   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row   6   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row   7   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row   8   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row   9   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row  10   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row  11   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row  12   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row  13   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row  14   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+row  15   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+
+menu items:
+1) display seats
+2) request tickets
+3) sales report
+4) reset data
+5) quit
+Enter menu option. Enter a number between 1 and 5
+3
+Seats Available     Seats Unavailable     Total Money Collected
+===============================================================
+445                 5                     $         62.50
+menu items:
+1) display seats
+2) request tickets
+3) sales report
+4) reset data
+5) quit
+Enter menu option. Enter a number between 1.00 and 5.00
+4
+Worning: you are about to reset data.  All sales and seating information will be lost
+Are you sure? y
+menu items:
+1) display seats
+2) request tickets
+3) sales report
+4) reset data
+5) quit
+Enter menu option. Enter a number between 1.00 and 5.00
+1
+column    01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
+row 1   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  
+row 2   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  
+row 3   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  
+row 4   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  
+row 5   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  
+row 6   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  
+row 7   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  
+row 8   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  
+row 9   #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  
+row 10  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  
+row 11  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  
+row 12  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  
+row 13  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  
+row 14  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  
+row 15  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  
+
+menu items:
+1) display seats
+2) request tickets
+3) sales report
+4) reset data
+5) quit
+Enter menu option. Enter a number between 1.00 and 5.00
+3
+Seats Available     Seats Unavailable     Total Money Collected
+===============================================================
+450                 0                     $         0.00
+menu items:
+1) display seats
+2) request tickets
+3) sales report
+4) reset data
+5) quit
+Enter menu option. Enter a number between 1.00 and 5.00
+5
