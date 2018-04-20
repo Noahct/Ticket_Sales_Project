@@ -1,7 +1,6 @@
 // ticketmanager.cpp
 // Noah Tucker, Richard Stadnick, Derek Morgan and Petra Gates
 // This program is where the ticketmanager class is defined
-//This file needs more comments
 
 
 #include "ticketmanager.h"					// include header file ticketmanager.h, by Richard S
@@ -115,7 +114,7 @@ void TicketManager::report(){ 					//display sales report
 	/******** displaying sales report on number of seats available/unavailable and total sales *******/
 	cout << setw(20) << left << "Seats Available" << setw(22) << left << "Seats Unavailable";
 	cout << setw(10) << "Total Money Collected" << endl;
-	cout << "===============================================================" << endl;
+	cout << "===============     =================     =====================" << endl;
 	cout << setw(20) << left << seatsAvailable << setw(22) << left << seatsUnavailable;
 	cout << setprecision(2) << fixed << showpoint;
 	cout << setw(10) << "$" << totalSales << endl;
