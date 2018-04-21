@@ -41,7 +41,7 @@ void TicketManager::displayChart(){
     cout << "column    " << "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20";		// column display mod PG
     cout << " 21 22 23 24 25 26 27 28 29 30\n";
     for(int row = 0; row < ROWS; row++){
-        cout << setw(4) << "row " << setw(3) << row + 1 << " ";
+        cout << setw(4) << "row " << left << setw(5) << row + 1 << " ";
         for(int col = 0; col < COLS; col++){
 		cout << setw(3);				// column spacing mod PG
             if(seats[row][col].available)
