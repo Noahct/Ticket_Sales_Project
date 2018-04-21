@@ -1,16 +1,17 @@
 // Group Project
 // ticketsales.cpp
 // Noah Tucker 
-// some description
+// this file is the main entry point where TicketManager methods are called and the UI is implemented
 
 
 #include "ticketmanager.h"
-#include <iostream>
 #include <algorithm>
-#include <string>
-using namespace std;
+//using namespace std;
 
-double getInput(double, double);  //declare getInput func
+string TYPE1 = "int";
+string TYPE2 = "double";
+
+double getInput(double, double, string);  //declare getInput func
 
 int main(){
     //create var of type TicketManeger
@@ -23,7 +24,7 @@ int main(){
 
         //get and validate user input with a function
         cout << "Enter menu option. ";
-        int menuItem = getInput(1, 5);
+        int menuItem = getInput(1, 5, TYPE1);
 
         if (menuItem == 1)  
             //display a chart of seating a '#' represents available seats a '*' represents unavailable seats
@@ -36,11 +37,11 @@ int main(){
             double payment;  //holds the users payment
             while (not puchased){
                 cout << "How many seat would you like to buy? (1, 30) ";
-                int numseats = getInput(1, 30);
+                int numseats = getInput(1, 30, TYPE1);
                 cout << "Enter a row number. (1, 15) ";
-                int row = getInput(1, 15) - 1;
-                cout << "Enter the index of the leftmost seat. (0, 30) ";
-                int startseat = getInput(1, 30) - 1;
+                int row = getInput(1, 15, TYPE1) - 1;
+                cout << "Enter the index of the leftmost seat. (1, 30) ";
+                int startseat = getInput(1, 30, TYPE1) - 1;
                 if (manager.ticketRequest(numseats, row, startseat)){  //do seats exist and are they available
                     double price = manager.get_price(numseats, row, startseat);  //get the price of the requested seats
                     cout << "These seats will cost $" << price << '\n';
@@ -50,7 +51,7 @@ int main(){
                     if (buy == "y" or buy == "yes"){  
                         do{ //get input until user provides enough money to buy seats
                             cout << "Enter your payment. If you want to reconsider enter 0. ";
-                            payment = getInput(0, price);
+                            payment = getInput(0, price, TYPE2);
                             if (payment == price){
                                 manager.purchase(numseats, row, startseat); //cout << "purchased\n";  //purchase seats
                                 puchased = true;
@@ -88,9 +89,14 @@ int main(){
 	}
 }
 
-double getInput(double min, double max){
+double getInput(double min, double max, string type){
     double input;
     do{
+        if (type == TYPE1){
+            cout << setprecision(0) << fixed;
+        }else{
+            cout << setprecision(2) << fixed;
+        }
         cout << "Enter a number between " << min << " and " << max << '\n';
         cin >> input;
     }while (input > max or input < min);
